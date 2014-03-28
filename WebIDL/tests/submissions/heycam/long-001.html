@@ -39,18 +39,18 @@ var values = [
   1.5,          1,            "1.5"
 ];
 
-// feature: HTMLPreElement.width (attribute) (writable, of type long)
+// feature: HTMLOLElement.start (attribute) (writable, of type long)
 
-var pre = document.createElement("pre");
+var ol = document.createElement("ol");
 
 for (var i = 0; i < values.length; i += 3) {
   var value = values[i];
   var expected = values[i + 1];
   var desc = values[i + 2];
   test(function() {
-    pre.width = value;
-    assert_equals(+pre.getAttribute("width"), expected);
-  }, "assigning " + desc + " to HTMLPreElement.width coerces the value to an IDL long correctly");
+    ol.start = value;
+    assert_equals(+ol.getAttribute("start"), expected);
+  }, "assigning " + desc + " to HTMLOListElement.start coerces the value to an IDL long correctly");
 }
 
 for (var i = 0; i < values.length; i += 3) {
@@ -60,13 +60,13 @@ for (var i = 0; i < values.length; i += 3) {
   test(function() {
     var objectValue = { valueOf: function() { return value; }, toString: function() { return { } } };
     if (value === null || typeof value != "object") {
-      pre.width = objectValue;
-      assert_equals(+pre.getAttribute("width"), expected);
+      ol.start = objectValue;
+      assert_equals(+ol.getAttribute("start"), expected);
     } else {
       // ToPrimitive() will throw a TypeError if valueOf and toString both return an object.
-      assert_throws(new TypeError(), function() { pre.width = objectValue; });
+      assert_throws(new TypeError(), function() { ol.start = objectValue; });
     }
-  }, "assigning { valueOf: function() { return " + desc + " } } to HTMLPreElement.width coerces the value to an IDL long correctly");
+  }, "assigning { valueOf: function() { return " + desc + " } } to HTMLOListElement.start coerces the value to an IDL long correctly");
 }
 
 for (var i = 0; i < values.length; i += 3) {
@@ -76,16 +76,16 @@ for (var i = 0; i < values.length; i += 3) {
   test(function() {
     var objectValue = { valueOf: function() { return { } }, toString: function() { return value; } };
     if (value === null || typeof value != "object") {
-      pre.width = objectValue;
-      assert_equals(+pre.getAttribute("width"), expected);
+      ol.start = objectValue;
+      assert_equals(+ol.getAttribute("start"), expected);
     } else {
       // ToPrimitive() will throw a TypeError if valueOf and toString both return an object.
-      assert_throws(new TypeError(), function() { pre.width = objectValue; });
+      assert_throws(new TypeError(), function() { ol.start = objectValue; });
     }
-  }, "assigning { toString: function() { return " + desc + " } } to HTMLPreElement.width coerces the value to an IDL long correctly");
+  }, "assigning { toString: function() { return " + desc + " } } to HTMLOListElement.start coerces the value to an IDL long correctly");
 }
 
 test(function() {
-  assert_throws({ name: "SomeError" }, function() { pre.width = { toString: function() { throw { name: "SomeError" }; } }; });
-}, "assigning { toString: function() { throw ... } } to HTMLPreElement.width will propagate the exception");
+  assert_throws({ name: "SomeError" }, function() { ol.start = { toString: function() { throw { name: "SomeError" }; } }; });
+}, "assigning { toString: function() { throw ... } } to HTMLOListElement.start will propagate the exception");
 </script>
