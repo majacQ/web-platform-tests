@@ -16,6 +16,7 @@
 test(function() {
   var a = new Uint8ClampedArray(1);
   a[0] = 128;
+  assert_equals(a[0], 128);
   a[0] = -1;
   assert_equals(a[0], 0);
   a[0] = 256;
