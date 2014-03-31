@@ -17,7 +17,12 @@
 
 test(function() {
   assert_throws(new TypeError(), function() { new Element(); }, "new Element()");
-}, "Calling new on an interface object whose interface does not have [Constructor]")
+}, "Calling new on an interface object whose interface does not have [Constructor]");
+
+test(function() {
+  assert_throws(new TypeError(), function() { Element(); }, "Element()");
+}, "Calling method on interface object whose interface does not have [Constructor]");
+
 
 // feature: Event (interface) (with [Constructor])
 
