@@ -25,8 +25,11 @@ test(function() {
 test(function() {
   var e1 = new Event("click");
   var e2 = new Event("click", { });
+  var e3 = new Event("click", null);
   assert_equals(e1.bubbles, e2.bubbles);
   assert_equals(e1.cancelable, e2.cancelable);
+  assert_equals(e1.bubbles, e3.bubbles);
+  assert_equals(e1.cancelable, e3.cancelable);
 }, "passing one argument to Event constructor will use the default argument value");
 
 test(function() {
