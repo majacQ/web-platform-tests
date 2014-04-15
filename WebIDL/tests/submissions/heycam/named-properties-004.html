@@ -32,7 +32,7 @@ test(function() {
   try {
     assert_throws({ name: "SomeError" }, function() { span.dataset.hello3 = "test"; });
   } finally {
-    delete DOMStringMap.prototype.hello2;
+    delete DOMStringMap.prototype.hello3;
   }
 }, "assigning to a property (on an DOMStringMap) that is not a supported property name and which corresponds to an accessor property on the prototype will invoke that property's creator");
 
