@@ -43,9 +43,11 @@ var values = [
   1.0000001788139343,  1.0000001788139343, "1.0000001788139343"
 ];
 
-// feature: HTMLProgressElement.value (attribute) (writable, of type double)
+// feature: HTMLMeterElement.value (attribute) (writable, of type double)
 
-var progress = document.createElement("progress");
+var meter = document.createElement("meter");
+meter.min = -1e308;
+meter.max = 1e308;
 
 for (var i = 0; i < values.length; i += 3) {
   var value = values[i];
@@ -53,12 +55,12 @@ for (var i = 0; i < values.length; i += 3) {
   var desc = values[i + 2];
   test(function() {
     if (expected !== undefined) {
-      progress.value = value;
-      assert_equals(progress.getAttribute("value"), String(expected));
+      meter.value = value;
+      assert_equals(meter.getAttribute("value"), String(expected));
     } else {
-      assert_throws(new TypeError(), function() { progress.value = value; });
+      assert_throws(new TypeError(), function() { meter.value = value; });
     }
-  }, "assigning " + desc + " to HTMLProgressElement.value coerces the value to an IDL double correctly");
+  }, "assigning " + desc + " to HTMLMeterElement.value coerces the value to an IDL double correctly");
 }
 
 for (var i = 0; i < values.length; i += 3) {
@@ -69,16 +71,16 @@ for (var i = 0; i < values.length; i += 3) {
     var objectValue = { valueOf: function() { return value; }, toString: function() { return { } } };
     if (value === null || typeof value != "object") {
       if (expected !== undefined) {
-        progress.value = objectValue;
-        assert_equals(progress.getAttribute("value"), String(expected));
+        meter.value = objectValue;
+        assert_equals(meter.getAttribute("value"), String(expected));
       } else {
-      assert_throws(new TypeError(), function() { progress.value = objectValue; });
+      assert_throws(new TypeError(), function() { meter.value = objectValue; });
       }
     } else {
       // ToPrimitive() will throw a TypeError if valueOf and toString both return an object.
-      assert_throws(new TypeError(), function() { progress.value = objectValue; });
+      assert_throws(new TypeError(), function() { meter.value = objectValue; });
     }
-  }, "assigning { valueOf: function() { return " + desc + " } } to HTMLProgressElement.value coerces the value to an IDL double correctly");
+  }, "assigning { valueOf: function() { return " + desc + " } } to HTMLMeterElement.value coerces the value to an IDL double correctly");
 }
 
 for (var i = 0; i < values.length; i += 3) {
@@ -89,19 +91,19 @@ for (var i = 0; i < values.length; i += 3) {
     var objectValue = { valueOf: function() { return { } }, toString: function() { return value; } };
     if (value === null || typeof value != "object") {
       if (expected !== undefined) {
-        progress.value = objectValue;
-        assert_equals(progress.getAttribute("value"), String(expected));
+        meter.value = objectValue;
+        assert_equals(meter.getAttribute("value"), String(expected));
       } else {
-      assert_throws(new TypeError(), function() { progress.value = objectValue; });
+      assert_throws(new TypeError(), function() { meter.value = objectValue; });
       }
     } else {
       // ToPrimitive() will throw a TypeError if valueOf and toString both return an object.
-      assert_throws(new TypeError(), function() { progress.value = objectValue; });
+      assert_throws(new TypeError(), function() { meter.value = objectValue; });
     }
-  }, "assigning { toString: function() { return " + desc + " } } to HTMLProgressElement.value coerces the value to an IDL double correctly");
+  }, "assigning { toString: function() { return " + desc + " } } to HTMLMeterElement.value coerces the value to an IDL double correctly");
 }
 
 test(function() {
-  assert_throws({ name: "SomeError" }, function() { progress.value = { toString: function() { throw { name: "SomeError" }; } }; });
-}, "assigning { toString: function() { throw ... } } to HTMLProgressElement.value will propagate the exception");
+  assert_throws({ name: "SomeError" }, function() { meter.value = { toString: function() { throw { name: "SomeError" }; } }; });
+}, "assigning { toString: function() { throw ... } } to HTMLMeterElement.value will propagate the exception");
 </script>
