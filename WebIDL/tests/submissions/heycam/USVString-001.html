@@ -8,11 +8,6 @@
 </head>
 <div id="log"></div>
 
-<div id="hidden" style="visibility: hidden; position: absolute; width: 0; height: 0; overflow: hidden">
-  <span id="span" class="abc def" data-test=""></span>
-</div>
-
-
 <script>
 // 4.2.18 USVString
 
@@ -20,9 +15,6 @@
 
 var input = "https://www.example.com/~foo";
 var testurl = new URL(input);
-
-var span = document.getElementById("span");
-var attr = span.getAttributeNode("data-test");
 
 var path_input_tab =  [ "/bar", "/小"       , "/\ud800\udc00", "/\ud800\ue000"      , "/\ud800\uda00"      , "/\udc00"   , "/\ud800"    ];
 var path_result_tab = [ "/bar", "/%E5%B0%8F", "/%F0%90%80%80", "/%EF%BF%BD%EE%80%80", "/%EF%BF%BD%EF%BF%BD", "/%EF%BF%BD", "/%EF%BF%BD" ];
