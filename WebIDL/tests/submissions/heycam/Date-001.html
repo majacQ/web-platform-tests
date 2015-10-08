@@ -17,16 +17,16 @@
 test(function() {
   var input = document.createElement("input");
   input.type = "date";
-  input.value = "2011-01-01";
+  input.value = "2011-04-01";
   var date = input.valueAsDate;
   assert_true(date instanceof Date);
-  assert_equals(date.getYear(), 111);
+  assert_equals(date.getFullYear(), 2011);
 }, "test getting HTMLInputElement.valueAsDate");
 
 test(function() {
   var input = document.createElement("input");
   input.type = "date";
-  input.value = "2011-01-01";
+  input.value = "2011-04-01";
   var date1 = input.valueAsDate;
   var date2 = input.valueAsDate;
   assert_true(date1 !== date2);
@@ -50,8 +50,8 @@ test(function() {
 test(function() {
   var input = document.createElement("input");
   input.type = "date";
-  input.valueAsDate = new Date("2011-01-01");
-  assert_true(input.value.indexOf("2011-01-01") == 0);
+  input.valueAsDate = new Date("2011-04-01");
+  assert_true(input.value.indexOf("2011-04-01") == 0);
 }, "test assigning a Date object to HTMLInputElement.valueAsDate");
 
 test(function() {
@@ -69,15 +69,15 @@ test(function() {
 test(function() {
   var input = document.createElement("input");
   input.type = "date";
-  assert_throws(new TypeError(), function() { input.valueAsDate = "2011-01-01"; });
-}, "test assigning \"2011-01-01\" to HTMLInputElement.valueAsDate");
+  assert_throws(new TypeError(), function() { input.valueAsDate = "2011-04-01"; });
+}, "test assigning \"2011-04-01\" to HTMLInputElement.valueAsDate");
 
 test(function() {
   var input = document.createElement("input");
   input.type = "date";
-  var date = new Date("2011-01-01");
+  var date = new Date("2011-04-01");
   date.valueOf = function() { throw "This exception should not have been thrown"; };
   input.valueAsDate = date;
-  assert_equals(input.valueAsDate.getYear(), "111");
+  assert_equals(input.valueAsDate.getFullYear(), 2011);
 }, "test assigning a Date object with a throwing valueOf method to HTMLInputElement.valueAsDate");
 </script>
