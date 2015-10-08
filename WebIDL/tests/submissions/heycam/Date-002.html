@@ -18,7 +18,7 @@ test(function() {
   input.type = "date";
   input.value = "2011-01-01";
   assert_equals(typeof input.valueAsDate, "object");
-  assert_true(Object.getPrototypeOf(input.valueAsDate), Date.prototype);
+  assert_equals(Object.getPrototypeOf(input.valueAsDate), Date.prototype);
   assert_true(input.valueAsDate != input.valueAsDate);
 }, "HTMLInputElement.valueAsDate returns a value of the correct type");
 </script>
