@@ -109,7 +109,7 @@ test(function() {
 
 test(function() {
   var desc = Object.getOwnPropertyDescriptor(window, "name");
-  assert_equals(desc.get.call(window, "extra"), "Getters for writable attributes");
+  assert_equals(desc.get.call(window, "extra"), "");
 }, "arguments passed to Window.name getter are ignored");
 
 </script>
