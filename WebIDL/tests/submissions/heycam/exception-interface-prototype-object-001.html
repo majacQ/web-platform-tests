@@ -22,10 +22,6 @@ test(function() {
 }, "DOMException.prototype has the right [[Prototype]]");
 
 test(function() {
-  assert_property(DOMException.prototype, "name", { writable: true, enumerable: false, configurable: true, value: "DOMException" });
-}, "DOMException.prototype.name has the right attributes and value");
-
-test(function() {
   assert_property(DOMException.prototype, "constructor", { writable: true, enumerable: false, configurable: true, value: DOMException });
 }, "DOMException.prototype.constructor has the right attributes and value");
 </script>
