@@ -129,7 +129,7 @@ test(function() {
 test(function() {
   var invoked = false;
   var span = document.createElement("span");
-  span.addEventListener("test", Image, false);
+  span.addEventListener("test", new Image(), false);
   dispatchEvent(span);
   assert_true(!invoked);
 }, "passing Image to EventTarget.addEventListener");
