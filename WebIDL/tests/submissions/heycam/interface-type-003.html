@@ -135,14 +135,6 @@ test(function() {
 }, "passing Image to EventTarget.addEventListener");
 
 test(function() {
-  var invoked = false;
-  var span = document.createElement("span");
-  span.addEventListener("test", Node.prototype.appendChild, false);
-  dispatchEvent(span);
-  assert_true(!invoked);
-}, "passing Node.prototype.appendChild to EventTarget.addEventListener");
-
-test(function() {
   var span = document.createElement("span");
   var text = document.createTextNode("a");
   span.addEventListener("test", span.appendChild.bind(span, text), false);
