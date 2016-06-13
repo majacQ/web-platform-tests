@@ -54,7 +54,7 @@ for (var i = 0; i < lengthProperties.length; i += 2) {
   var val = lengthProperties[i + 1];
 
   test(function() {
-    assert_property(window[intf], "length", { writable: false, enumerable: false, configurable: false, value: val }, intf + ".length");
+    assert_property(window[intf], "length", { writable: false, enumerable: false, configurable: true, value: val }, intf + ".length");
   }, intf + " has correct length property");
 }
 </script>
