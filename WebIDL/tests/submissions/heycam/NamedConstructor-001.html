@@ -51,7 +51,7 @@ for (var i = 0; i < lengthProperties.length; i += 3) {
     assert_property(window, named, { writable: true, enumerable: false, configurable: true }, "window." + named);
   }, named + " named constructor exists");
   test(function() {
-    assert_property(window[named], "length", { writable: false, enumerable: false, configurable: false, value: val }, named + ".length");
+    assert_property(window[named], "length", { writable: false, enumerable: false, configurable: true, value: val }, named + ".length");
   }, named + " has correct length property");
   test(function() {
     assert_property(window[named], "prototype", { writable: false, enumerable: false, configurable: false, value: window[intf].prototype }, named + ".prototype");
