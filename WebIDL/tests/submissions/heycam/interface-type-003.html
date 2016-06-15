@@ -11,10 +11,6 @@
 // If the value being converted to an interface type is not an object, a
 // TypeError exception is thrown.
 //
-// For a single operation callback interface, any object that is not a native
-// Date object and a native RegExp object is accepted.  That includes platform
-// objects.
-//
 // We are using EventTarget.addEventListener() for this test, which has an
 // "EventListener?" argument.
 
@@ -93,17 +89,23 @@ test(function() {
 }, "passing { } -> { handleEvent } to EventTarget.addEventListener");
 
 test(function() {
+  var invoked = false;
   var span = document.createElement("span");
   var regexp = /abc/;
   regexp.handleEvent = function() { };
-  assert_throws(new TypeError(), function() { span.addEventListener("test", regexp, false); });
-}, "passing /abc/ to EventTarget.addEventListener");
+  span.addEventListener("test", regexp, false);
+  dispatchEvent(span);
+  assert_true(invoked);
+}, "passing /abc/ with handleEvent to EventTarget.addEventListener");
 
 test(function() {
+  var invoked = false;
   var span = document.createElement("span");
   var date = new Date();
   date.handleEvent = function() { };
-  assert_throws(new TypeError(), function() { span.addEventListener("test", date, false); });
+  span.addEventListener("test", date, false);
+  dispatchEvent(span);
+  assert_true(invoked);
 }, "passing Date object to EventTarget.addEventListener");
 
 test(function() {
