@@ -11,20 +11,17 @@
 // Objects that implement an interface that has a legacy caller have an
 // internal [[Call]] method that invokes the caller behavior.
 
-// feature: HTMLObjectElement (interface) (with a legacy caller)
+// feature: HTMLObjectElement (interface) with legacy caller
+// feature: HTMLAllCollection (interface) with legacy caller
 
 test(function() {
   var object = document.createElement("object");
   assert_equals(typeof object, "function");
-}, "typeof HTMLObjectElement is correct");
+}, "typeof HTMLObjectElement is function");
 
 test(function() {
-  var object = document.createElement("object");
-  assert_throws("NotSupportedError", function() { object(); });
-}, "an HTMLObjectElement can be called");
-
-test(function() {
-  var object = document.createElement("object");
-  assert_throws("NotSupportedError", function() { Function.prototype.call.call(object); });
-}, "Function.prototype.call can be applied to an HTMLObjectElement");
+  var allCollection = document.all;
+  var elem = allCollection(2);
+  assert_true(elem instanceof HTMLTitleElement);
+}, "an HTMLAllCollection can be called");
 </script>

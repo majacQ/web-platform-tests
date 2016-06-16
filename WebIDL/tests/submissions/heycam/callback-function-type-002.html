@@ -45,14 +45,16 @@ test(function() {
 
 test(function() {
   var span = document.createElement("span");
-  span.onclick = { };
-  assert_equals(span.onclick, null);
+  var obj = { };
+  span.onclick = obj;
+  assert_equals(span.onclick, obj); // because of [[TreatNonObjectAsNull]]
 }, "assigning { } converts to an IDL callback function type correctly");
 
 test(function() {
   var span = document.createElement("span");
-  span.onclick = [];
-  assert_equals(span.onclick, null);
+  var array = [];
+  span.onclick = array;
+  assert_equals(span.onclick, array); // because of [[TreatNonObjectAsNull]]
 }, "assigning [] converts to an IDL callback function type correctly");
 
 test(function() {

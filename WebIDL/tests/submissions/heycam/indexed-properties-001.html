@@ -30,20 +30,23 @@ test(function() {
 }, "Object.preventExtensions must fail on a NodeList since it supports indexed properties");
 
 
-// feature: Uint8Array (interface) (supports indexed properties)
+// was testing Uint8Array, but this is no longer a platform object (interface)--it's native to 
+// ECMAScript, and supports seal() and preventExtensions()
+
+// Test with HTMLCollection (supports indexed properties)
 
 test(function() {
-  var a = new Uint8Array(1);
+  var a = document.scripts;
   assert_throws(new TypeError(), function() { Object.freeze(a); });
-}, "Object.freeze must fail on a Uint8Array since it supports indexed properties");
+}, "Object.freeze must fail on an HTMLCollection since it supports indexed properties");
 
 test(function() {
-  var a = new Uint8Array(1);
+  var a = document.scripts;
   assert_throws(new TypeError(), function() { Object.seal(a); });
-}, "Object.seal must fail on a Uint8Array since it supports indexed properties");
+}, "Object.seal must fail on an HTMLCollection since it supports indexed properties");
 
 test(function() {
-  var a = new Uint8Array(1);
+  var a = document.scripts;
   assert_throws(new TypeError(), function() { Object.preventExtensions(a); });
-}, "Object.preventExtensions must fail on a Uint8Array since it supports indexed properties");
+}, "Object.preventExtensions must fail on an HTMLCollection since it supports indexed properties");
 </script>

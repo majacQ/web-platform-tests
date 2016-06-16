@@ -42,7 +42,7 @@ test(function() {
     object = Object.getPrototypeOf(object);
   }
   assert_true(!!desc, "named property exposed through [[GetOwnProperty]]");
-  assert_descriptor(desc, { writable: false, enumerable: true, configurable: true, value: form1 }, "f1");
+  assert_descriptor(desc, { writable: true, enumerable: false, configurable: true, value: form1 }, "f1");
 }, "named properties are exposed correctly through [[GetOwnProperty]]");
 
 // XXX We probably shouldn't allow non-configurable properties to be defined
