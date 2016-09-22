@@ -4,7 +4,7 @@
     <title>XMLHttpRequest: getResponseHeader() in unsent, opened states</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <link rel="help" href="http://dvcs.w3.org/hg/xhr/raw-file/tip/Overview.html#dom-xmlhttprequest-getresponseheader" data-tested-assertations="/following::OL[1]/LI[1]" />
+    <link rel="help" href="https://xhr.spec.whatwg.org/#dom-xmlhttprequest-getresponseheader" data-tested-assertations="/following::OL[1]/LI[1]" />
   </head>
   <body>
     <div id="log"></div>
@@ -22,7 +22,7 @@
             }
           })
         }
-        client.open("GET", "resources/headers.php")
+        client.open("GET", "resources/headers.py")
         assert_equals(client.getResponseHeader("x-custom-header"), null)
         assert_equals(client.getResponseHeader("Date"), null)
         client.send(null)

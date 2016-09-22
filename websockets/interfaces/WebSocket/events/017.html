@@ -2,11 +2,13 @@
 <title>WebSockets: this, e.target, e.currentTarget, e.eventPhase</title>
 <script src=/resources/testharness.js></script>
 <script src=/resources/testharnessreport.js></script>
-<script src=../../../constants.js></script>
+<script src=../../../constants.js?pipe=sub></script>
+<meta name="variant" content="">
+<meta name="variant" content="?wss">
 <div id=log></div>
 <script>
 async_test(function(t) {
-  var ws = new WebSocket(SCHEME_DOMAIN_PORT+'/ws/echo_raw');
+  var ws = new WebSocket(SCHEME_DOMAIN_PORT+'/echo_raw');
   ws.addEventListener('open', function(e) {
     var this_val = this;
     t.step(function() {
@@ -46,6 +48,6 @@ async_test(function(t) {
       assert_equals(e.eventPhase, 2);
       t.done();
     });
-  }, false);  
+  }, false);
 });
 </script>

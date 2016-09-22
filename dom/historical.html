@@ -10,18 +10,18 @@ function isInterfaceNuked(name) {
   }, "Historical DOM features must be removed: " + name)
 }
 var nukedInterfaces = [
-  "CDATASection",
   "DOMConfiguration",
+  "DOMError",
   "DOMErrorHandler",
   "DOMImplementationList",
   "DOMImplementationSource",
   "DOMLocator",
   "DOMObject",
+  "DOMSettableTokenList",
   "DOMUserData",
   "Entity",
   "EntityReference",
   "EventException", // DOM Events
-  "NamedNodeMap",
   "NameList",
   "Notation",
   "TypeInfo",
@@ -38,11 +38,7 @@ function isNukedFromDocument(name) {
   }, "Historical DOM features must be removed: " + name)
 }
 var documentNuked = [
-  "createCDATASection",
-  "createAttribute",
-  "createAttributeNS",
   "createEntityReference",
-  "inputEncoding",
   "xmlEncoding",
   "xmlStandalone",
   "xmlVersion",
@@ -50,7 +46,6 @@ var documentNuked = [
   "domConfig",
   "normalizeDocument",
   "renameNode",
-  "charset",
   "defaultCharset",
   "height",
   "width"
@@ -69,10 +64,6 @@ function isNukedFromElement(name) {
   }, "Historical DOM features must be removed: " + name)
 }
 var elementNuked = [
-  "getAttributeNode",
-  "getAttributeNodeNS",
-  "setAttributeNode",
-  "removeAttributeNode",
   "schemaTypeInfo",
   "setIdAttribute",
   "setIdAttributeNS",
@@ -117,14 +108,15 @@ function isNukedFromNode(name) {
 }
 var nodeNuked = [
   "hasAttributes",
-  //"attributes",
-  //"namespaceURI",
-  //"prefix",
-  //"localName",
+  "attributes",
+  "namespaceURI",
+  "prefix",
+  "localName",
   "isSupported",
   "getFeature",
   "getUserData",
-  "setUserData"
+  "setUserData",
+  "rootNode",
 ]
 nodeNuked.forEach(isNukedFromNode)
 

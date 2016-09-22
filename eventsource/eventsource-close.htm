@@ -8,24 +8,22 @@
   <body>
     <div id="log"></div>
     <script>
-      setup({ timeout: 10000 });
-
       var test = async_test()
       test.step(function() {
-        var source = new EventSource("resources/message.php")
-        source.onopen = function() {
-          test.step(function() {
-            this.close()
-            assert_equals(this.readyState, this.CLOSED)
-          }, this)
-          test.done()
-        }
+        var source = new EventSource("resources/message.py")
+        assert_equals(source.readyState, source.CONNECTING, "connecting readyState");
+        source.onopen = this.step_func(function() {
+          assert_equals(source.readyState, source.OPEN, "open readyState");
+          source.close()
+          assert_equals(source.readyState, source.CLOSED, "closed readyState");
+          this.done()
+        })
       })
 
       var test2 = async_test(document.title + ", test events", { timeout: 9000 });
       test2.step(function() {
         var count = 0, reconnected = false,
-            source = new EventSource("resources/reconnect-fail.php?id=" + new Date().getTime());
+            source = new EventSource("resources/reconnect-fail.py?id=" + new Date().getTime());
 
         source.onerror = this.step_func(function(e) {
           assert_equals(e.type, 'error');
@@ -74,11 +72,6 @@
           }
 
           count++;
-        });
-
-        source.onopen = this.step_func(function(e) {
-          assert_equals(source.readyState, source.OPEN, "open readyState");
-          //assert_equals(count, 0, "message count"); //XXX Order of execution is not specified
         });
 
       });

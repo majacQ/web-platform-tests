@@ -4,6 +4,11 @@
     <title>XMLHttpRequest: send() - Redirects (no Location header)</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
+    <link rel="help" href="https://xhr.spec.whatwg.org/#infrastructure-for-the-send()-method" data-tested-assertations="following::dl[1]/dt[2]" />
+    <!-- 
+      NOTE: the XHR spec does not really handle this scenario. It's handled in the Fetch spec:
+      "If response's headers do not contain a header whose name is Location, return response."
+     -->
   </head>
   <body>
     <div id="log"></div>
@@ -22,7 +27,7 @@
               }
             })
           }
-          client.open("GET", "resources/status.php?content=<x>x<\/x>&type=text/xml&text=ABE ODDYSSEE&code=" + code)
+          client.open("GET", "resources/status.py?content=<x>x<\/x>&type=text/xml&text=ABE ODDYSSEE&code=" + code)
           client.send(null)
         })
       }

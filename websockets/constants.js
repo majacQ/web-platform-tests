@@ -1,17 +1,12 @@
-//FIXME: 
-var DOMAIN_FOR_WS_TESTS = location.hostname;
-var DOMAIN_FOR_WSS_TESTS = location.hostname;
+//This file requires server-side substitutions and must be included as constants.js?pipe=sub
 
-var PORT = "80";
-var PORT_SSL = "443";
+var PORT = "{{ports[ws][0]}}";
+//FIXME: Add support for wss
+var PORT_SSL = "{{ports[ws][0]}}";
 
-// logic for using wss URLs instead of ws
-var SCHEME_AND_DOMAIN;
 var SCHEME_DOMAIN_PORT;
 if (location.search == '?wss') {
-  SCHEME_AND_DOMAIN = 'wss://'+DOMAIN_FOR_WSS_TESTS;
-  SCHEME_DOMAIN_PORT = SCHEME_AND_DOMAIN + ":" + PORT_SSL;
+  SCHEME_DOMAIN_PORT = 'wss://{{host}}:' + PORT_SSL;
 } else {
-  SCHEME_AND_DOMAIN = 'ws://'+DOMAIN_FOR_WS_TESTS;
-  SCHEME_DOMAIN_PORT = SCHEME_AND_DOMAIN + ":" + PORT;
+  SCHEME_DOMAIN_PORT = 'ws://{{host}}:' + PORT;
 }

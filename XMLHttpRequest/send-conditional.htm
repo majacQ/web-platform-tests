@@ -4,6 +4,7 @@
     <title>XMLHttpRequest: send() - conditional requests</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
+    <link rel="help" href="https://xhr.spec.whatwg.org/#the-send()-method" data-tested-assertations="following::code[contains(text(),'Modified')]/.." />
   </head>
   <body>
     <div id="log"></div>
@@ -12,7 +13,7 @@
         test(function() {
           var client = new XMLHttpRequest,
           identifier = type == "tag" ? Math.random() : new Date().toGMTString(),
-          url = "resources/conditional.php?" + type + "=" + identifier
+          url = "resources/conditional.py?" + type + "=" + identifier
           client.open("GET", url, false)
           client.send(null)
           assert_equals(client.status, 200)
