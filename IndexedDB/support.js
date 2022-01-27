@@ -1,5 +1,30 @@
+  <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+﻿if (!window.indexedDB)
+{
+    if (window.msIndexedDB)
+    {
+        window.indexedDB = window.msIndexedDB;
+    }
+    else if (window.mozIndexedDB)
+    {
+        window.indexedDB = window.mozIndexedDB;
+    }
+    else if (window.webkitIndexedDB)
+    {
+        window.indexedDB        = webkitIndexedDB;
+        IDBCursor               = webkitIDBCursor;
+        IDBDatabaseException    = webkitIDBDatabaseException;
+        IDBIndex                = webkitIDBIndex;
+        IDBObjectStore          = webkitIDBObjectStore;
+        IDBRequest              = webkitIDBRequest;
+        IDBKeyRange             = webkitIDBKeyRange;
+        IDBTransaction          = webkitIDBTransaction;
+    }
+}
+  =======
 var databaseName = "database";
 var databaseVersion = 1;
+  >>>>>>> document-dir-empty-sting
 
 /* Delete created databases
  *
@@ -17,6 +42,13 @@ add_completion_callback(function(tests)
     }
 });
 
+  <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+function createdb(test, dbname, version)
+{
+    var rq_open,
+      fake_open = {},
+      dbname = (dbname ? dbname : "testdb-" + new Date().getTime() + Math.random() );
+  =======
 function fail(test, desc) {
     return test.step_func(function(e) {
         if (e && e.message && e.target.error)
@@ -41,17 +73,31 @@ function createdb_for_multiple_tests(dbname, version) {
         fake_open = {},
         test = null,
         dbname = (dbname ? dbname : "testdb-" + new Date().getTime() + Math.random() );
+  >>>>>>> document-dir-empty-sting
 
     if (version)
         rq_open = window.indexedDB.open(dbname, version);
     else
         rq_open = window.indexedDB.open(dbname);
 
+  <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+    function auto_fail(evt) {
+  =======
     function auto_fail(evt, current_test) {
+  >>>>>>> document-dir-empty-sting
         /* Fail handlers, if we haven't set on/whatever/, don't
          * expect to get event whatever. */
         rq_open.manually_handled = {}
 
+  <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+        rq_open.addEventListener(evt,
+            test.step_func(function(e) {
+                if (!rq_open.manually_handled[evt])
+                    assert_unreached("unexpected open." + evt + " event")
+
+                if (e.target.result + "" == "[object IDBDatabase]" && !this.db)
+                {
+  =======
         rq_open.addEventListener(evt, function(e) {
             if (current_test !== test) {
                 return;
@@ -63,6 +109,7 @@ function createdb_for_multiple_tests(dbname, version) {
                 }
 
                 if (e.target.result + "" == "[object IDBDatabase]" && !this.db) {
+  >>>>>>> document-dir-empty-sting
                     this.db = e.target.result;
 
                     this.db.onerror = fail(test, "unexpected db.error");
@@ -70,6 +117,39 @@ function createdb_for_multiple_tests(dbname, version) {
                     this.db.onversionchange = fail(test, "unexpected db.versionchange");
                 }
             })
+  <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+        )
+        rq_open.__defineSetter__("on" + evt, function(h) {
+            rq_open.manually_handled[evt] = true
+            if (!h)
+                rq_open.addEventListener(evt, function() {})
+            else
+                rq_open.addEventListener(evt, test.step_func(h))
+        })
+    }
+
+    auto_fail("upgradeneeded")
+    auto_fail("success")
+    auto_fail("blocked")
+    auto_fail("error")
+
+    return rq_open
+}
+
+function fail(test, desc) {
+    return test.step_func(function(e) {
+        console.log(desc, e);
+
+        if (e && e.message && e.target.error)
+            assert_unreached(desc + " (" + e.target.error.name + ": " + e.message + ")");
+        else if (e && e.message)
+            assert_unreached(desc + " (" + e.message + ")");
+        else if (e && e.target.error)
+            assert_unreached(desc + " (" + e.target.error.name + ")");
+        else
+            assert_unreached(desc);
+    });
+  =======
         })
         rq_open.__defineSetter__("on" + evt, function(h) {
             rq_open.manually_handled[evt] = true;
@@ -120,4 +200,5 @@ function indexeddb_test(upgrade_func, open_func, description) {
                 open_func(t, db);
         });
     }, description);
+  >>>>>>> document-dir-empty-sting
 }
