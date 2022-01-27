@@ -5,7 +5,8 @@
 ,   "dependencies": {
         "wrench":   "*"
     ,   "express":  "*"
-    ,   "request":  "~2.9.203"
+    ,   "request":  "~2.68.0"
     ,   "jsdom":    "0.3.1"
     }
 }
+ 
