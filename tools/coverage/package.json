@@ -1,0 +1,19 @@
+{
+    "name":     "coverage-analysis"
+,   "version":  "0.0.1"
+,   "private":  true
+,   "dependencies": {
+        "wrench":   "*"
+    ,   "express":  "*"
+  <<<<<<< dir-auto-textarea
+    ,   "request":  "~2.9.203"
+    ,   "jsdom":    "0.3.1"
+    }
+}
+  =======
+    ,   "request":  "~2.68.0"
+    ,   "jsdom":    "0.3.1"
+    }
+}
+ 
+  >>>>>>> CR

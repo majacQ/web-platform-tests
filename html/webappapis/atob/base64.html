@@ -205,7 +205,7 @@ function testBtoa(input) {
 	var normalizedInput = String(input);
 	for (var i = 0; i < normalizedInput.length; i++) {
 		if (normalizedInput.charCodeAt(i) > 255) {
-			assert_throws("INVALID_CHARACTER_ERR", function() { btoa(input); },
+			assert_throws("InvalidCharacterError", function() { btoa(input); },
 				"Code unit " + i + " has value " + normalizedInput.charCodeAt(i) + ", which is greater than 255");
 			return;
 		}
@@ -255,7 +255,11 @@ generate_tests(testBtoa, tests);
 function testAtob(input) {
 	var expected = myatob(input);
 	if (expected === null) {
+  <<<<<<< submission/AryehGregor
 		assert_throws("INVALID_CHARACTER_ERR", function() { atob(input) });
+  =======
+		assert_throws("InvalidCharacterError", function() { atob(input) });
+  >>>>>>> main
 		return;
 	}
 
@@ -296,7 +300,11 @@ var tests = ["", "abcd", " abcd", "abcd ", "abcd===", " abcd===", "abcd=== ",
 tests = tests.map(
 	function(elem) {
 		if (myatob(elem) === null) {
+  <<<<<<< submission/AryehGregor
 			return ["atob(" + format_value(elem) + ") must raise INVALID_CHARACTER_ERR", elem];
+  =======
+			return ["atob(" + format_value(elem) + ") must raise InvalidCharacterError", elem];
+  >>>>>>> main
 		}
 		return ["atob(" + format_value(elem) + ") == " + format_value(myatob(elem)), elem];
 	}
