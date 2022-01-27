@@ -56,12 +56,15 @@ Save the Web, Write Some Tests!
 
 Let's get the legalese out of the way:
 
-You may wish to read the details below, but the **simplest thing to know** is this:
+  <<<<<<< submission/AryehGregor
+  =======
+You should read the details included, and remember the **simplest thing to know** is this:
 
 * if the company you work for is already a member of the HTML WG, then you don't need 
   to worry; you're already covered
 * if not, you will need to [fill out this form](http://www.w3.org/2002/09/wbs/1/testgrants2-200409/)
 
+  >>>>>>> main
 ### Grant of License for Contributed Test Cases Published Outside a W3C Recommendation
 
 By contributing to this repository, you, the Contributor, hereby grant
@@ -74,6 +77,8 @@ any derivative works prepared by the W3C and based on, or
 incorporating all or part of the contribution. The Contributor further
 agrees that any derivative works of this contribution prepared by the
 W3C shall be solely owned by the W3C.
+  <<<<<<< submission/AryehGregor
+  =======
   <<<<<<< dir-auto-textarea
   =======
   <<<<<<< submission/Ms2ger/hidden
@@ -102,6 +107,7 @@ just contact us to ask about it.
 ### Disclaimer
 
   =======
+  >>>>>>> main
 
 The Contributor states, to the best of her/his knowledge, that she/he,
 or the company she/he represents, has all rights necessary to
@@ -118,8 +124,11 @@ just contact us to ask about it.
 
 ### Disclaimer
 
+  <<<<<<< submission/AryehGregor
+  =======
   >>>>>>> CR
   >>>>>>> CR
+  >>>>>>> main
 THE CONTRIBUTION IS PROVIDED AS IS, AND CONTRIBUTORS MAKE NO
 REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT
 LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
