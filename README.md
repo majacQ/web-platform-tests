@@ -6,6 +6,12 @@ This is the HTML Working Group's test suite for HTML, Canvas, and Microdata
 Task Force, which for all that it has "Task Force" in its name is really a
 bunch of cool froods.
 
+Publication
+===========
+
+The master branch is synced every ten minutes to: http://w3c-test.org/web-platform-tests/master/.
+Likewise the CR branch to: http://w3c-test.org/web-platform-tests/CR/.
+
 Finding Things
 ==============
 
@@ -49,6 +55,12 @@ Contributing
 Save the Web, Write Some Tests!
 
 Let's get the legalese out of the way:
+
+You may wish to read the details below, but the **simplest thing to know** is this:
+
+* if the company you work for is already a member of the HTML WG, then you don't need 
+  to worry; you're already covered
+* if not, you will need to [fill out this form](http://www.w3.org/2002/09/wbs/1/testgrants2-200409/)
 
 ### Grant of License for Contributed Test Cases Published Outside a W3C Recommendation
 
