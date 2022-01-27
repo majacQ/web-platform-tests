@@ -4,6 +4,11 @@ TODO:
     Google          (not sure how much of that is what's already in)
     Infraware       (these come bundled with resources and require lots of rewriting)
     Intel           (need to check how much overlap there is with existing stuff)
+  <<<<<<< submission/Ms2ger/IndexedDB
+    Microsoft       (lots of things, need to check overlap)
+    Ms2ger          (Ms2ger is doing those)
+    Opera           (split into multiple PRs)
+  =======
   <<<<<<< submission/Opera/XHR
     Microsoft       (lots of things, need to check overlap)
     Ms2ger          (Ms2ger is doing those)
@@ -15,6 +20,7 @@ TODO:
     Ms2ger
     Opera
     PhilipTaylor
+  >>>>>>> subsmission/WebKit
   >>>>>>> subsmission/WebKit
     TestTWF_Paris
     W3C
@@ -28,11 +34,17 @@ DONE:
     DavidCarlisle
     html5bidi
     MathiasBynens
+  <<<<<<< submission/Ms2ger/IndexedDB
+  =======
   <<<<<<< submission/Opera/XHR
+  >>>>>>> subsmission/WebKit
     PhilipTaylor
     MOSQUITO
     Mozilla
     WebKit
+  <<<<<<< submission/Ms2ger/IndexedDB
   =======
+  =======
+  >>>>>>> subsmission/WebKit
   >>>>>>> subsmission/WebKit
     
