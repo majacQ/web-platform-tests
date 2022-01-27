@@ -1,5 +1,11 @@
+  <<<<<<< submission/Ms2ger/document.body
 window-indexed-properties.html
 window-indexed-properties-strict.html
 window-named-properties.html
+  =======
+dir named-access-on-the-window-object
+window-indexed-properties.html
+window-indexed-properties-strict.html
+  >>>>>>> CR
 window-properties.html
 window-prototype-chain.html
