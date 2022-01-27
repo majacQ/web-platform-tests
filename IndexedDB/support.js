@@ -1,7 +1,10 @@
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
   >>>>>>> document-dir-empty-sting
 ﻿if (!window.indexedDB)
 {
@@ -25,9 +28,12 @@
         IDBTransaction          = webkitIDBTransaction;
     }
 }
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
   =======
 var databaseName = "database";
 var databaseVersion = 1;
+  >>>>>>> document-dir-empty-sting
   >>>>>>> document-dir-empty-sting
 
 /* Delete created databases
@@ -46,16 +52,21 @@ add_completion_callback(function(tests)
     }
 });
 
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
   >>>>>>> document-dir-empty-sting
 function createdb(test, dbname, version)
 {
     var rq_open,
       fake_open = {},
       dbname = (dbname ? dbname : "testdb-" + new Date().getTime() + Math.random() );
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
   =======
 function fail(test, desc) {
     return test.step_func(function(e) {
@@ -82,12 +93,16 @@ function createdb_for_multiple_tests(dbname, version) {
         test = null,
         dbname = (dbname ? dbname : "testdb-" + new Date().getTime() + Math.random() );
   >>>>>>> document-dir-empty-sting
+  >>>>>>> document-dir-empty-sting
 
     if (version)
         rq_open = window.indexedDB.open(dbname, version);
     else
         rq_open = window.indexedDB.open(dbname);
 
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+    function auto_fail(evt) {
+  =======
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   =======
@@ -97,14 +112,18 @@ function createdb_for_multiple_tests(dbname, version) {
   =======
     function auto_fail(evt, current_test) {
   >>>>>>> document-dir-empty-sting
+  >>>>>>> document-dir-empty-sting
         /* Fail handlers, if we haven't set on/whatever/, don't
          * expect to get event whatever. */
         rq_open.manually_handled = {}
 
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
   >>>>>>> document-dir-empty-sting
         rq_open.addEventListener(evt,
             test.step_func(function(e) {
@@ -113,6 +132,8 @@ function createdb_for_multiple_tests(dbname, version) {
 
                 if (e.target.result + "" == "[object IDBDatabase]" && !this.db)
                 {
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
   =======
         rq_open.addEventListener(evt, function(e) {
             if (current_test !== test) {
@@ -126,6 +147,7 @@ function createdb_for_multiple_tests(dbname, version) {
 
                 if (e.target.result + "" == "[object IDBDatabase]" && !this.db) {
   >>>>>>> document-dir-empty-sting
+  >>>>>>> document-dir-empty-sting
                     this.db = e.target.result;
 
                     this.db.onerror = fail(test, "unexpected db.error");
@@ -133,10 +155,13 @@ function createdb_for_multiple_tests(dbname, version) {
                     this.db.onversionchange = fail(test, "unexpected db.versionchange");
                 }
             })
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
   =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
   >>>>>>> document-dir-empty-sting
         )
         rq_open.__defineSetter__("on" + evt, function(h) {
@@ -169,6 +194,62 @@ function fail(test, desc) {
         else
             assert_unreached(desc);
     });
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+}
+
+// modified version of support.js’ createdb function,
+// the returned DB object has a `setTest(t)` method which
+// change the 'test' object used for fails reports, and return
+// the DB object (for chained calls)
+// Author: Baptiste Fontaine (batifon@yahoo.fr, bfn on IRC)
+function createdb_for_multiple_tests(dbname, version) {
+    var rq_open,
+        fake_open = {},
+        test = null,
+        dbname = (dbname ? dbname : "testdb-" + new Date().getTime() + Math.random() );
+
+    if (version)
+        rq_open = window.indexedDB.open(dbname, version);
+    else
+        rq_open = window.indexedDB.open(dbname);
+
+    function auto_fail(evt, current_test) {
+        /* Fail handlers, if we haven't set on/whatever/, don't
+         * expect to get event whatever. */
+        rq_open.manually_handled = {}
+
+        rq_open.addEventListener(evt,
+
+            function(e) {
+
+                if (current_test !== test) {
+                    return;
+                }
+
+                test.step(function() {
+                    if (!rq_open.manually_handled[evt]) {
+                        assert_unreached("unexpected open." + evt + " event");
+                    }
+
+                    if (e.target.result + "" == "[object IDBDatabase]" && !this.db) {
+                        this.db = e.target.result;
+
+                        this.db.onerror = fail(test, "unexpected db.error");
+                        this.db.onabort = fail(test, "unexpected db.abort");
+                        this.db.onversionchange = fail(test, "unexpected db.versionchange");
+                    }
+                });
+
+            }
+
+        )
+        rq_open.__defineSetter__("on" + evt, function(h) {
+            rq_open.manually_handled[evt] = true
+            if (!h)
+                rq_open.addEventListener(evt, function() {})
+            else
+                rq_open.addEventListener(evt, test.step_func(h))
+  =======
   =======
         })
         rq_open.__defineSetter__("on" + evt, function(h) {
@@ -177,24 +258,38 @@ function fail(test, desc) {
                 rq_open.addEventListener(evt, function() {});
             else
                 rq_open.addEventListener(evt, test.step_func(h));
+  >>>>>>> document-dir-empty-sting
         })
     }
 
     // add a .setTest method to the DB object
     Object.defineProperty(rq_open, 'setTest', {
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+        enumerable : false,
+        value      : function(t) {
+
+  =======
         enumerable: false,
         value: function(t) {
+  >>>>>>> document-dir-empty-sting
             test = t;
 
             auto_fail("upgradeneeded", test);
             auto_fail("success", test);
             auto_fail("blocked", test);
             auto_fail("error", test);
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+            
+  =======
 
+  >>>>>>> document-dir-empty-sting
             return this;
         }
     });
 
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+    return rq_open
+  =======
     return rq_open;
 }
 
@@ -220,5 +315,6 @@ function indexeddb_test(upgrade_func, open_func, description) {
                 open_func(t, db);
         });
     }, description);
+  >>>>>>> document-dir-empty-sting
   >>>>>>> document-dir-empty-sting
 }
