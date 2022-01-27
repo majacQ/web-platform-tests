@@ -1,4 +1,8 @@
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
 ﻿<!DOCTYPE html>
+  =======
+<!DOCTYPE html>
+  >>>>>>> document-dir-empty-sting
 <!-- Submitted from TestTWF Paris -->
 <meta charset=utf-8">
 <title>Invalid key</title>
@@ -17,22 +21,46 @@
         objStore  = null,
         objStore2 = null;
 
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
+  =======
+    function is_cloneable(o) {
+        try {
+            self.postMessage(o, '*');
+            return true;
+        } catch (ex) {
+            return false;
+        }
+    }
+
+  >>>>>>> document-dir-empty-sting
     function invalid_key(desc, key) {
         var t = async_test(document.title + " - " + desc);
 
         // set the current test, and run it
         db.setTest(t).onupgradeneeded = function(e) {
             objStore = objStore || e.target.result.createObjectStore("store");
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
             try { objStore.add("value", key); } catch(e) { console.log(e) };
+  =======
+  >>>>>>> document-dir-empty-sting
             assert_throws('DataError', function() {
                 objStore.add("value", key);
             });
 
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
             objStore2 = objStore2 || e.target.result.createObjectStore("store2", { keyPath: ["x", "keypath"] });
             assert_throws('DataError', function() {
                 objStore2.add({ x: "value", keypath: key });
             });
 
+  =======
+            if (is_cloneable(key)) {
+                objStore2 = objStore2 || e.target.result.createObjectStore("store2", { keyPath: ["x", "keypath"] });
+                assert_throws('DataError', function() {
+                    objStore2.add({ x: "value", keypath: key });
+                });
+            }
+  >>>>>>> document-dir-empty-sting
             this.done();
         };
     }
@@ -49,14 +77,22 @@
     // booleans
     invalid_key( 'true'  , true );
     invalid_key( 'false' , false );
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
     
+  =======
+
+  >>>>>>> document-dir-empty-sting
     // null/NaN/undefined
     invalid_key( 'null'      , null );
     invalid_key( 'NaN'       , NaN );
     invalid_key( 'undefined' , undefined );
     invalid_key( 'undefined2');
 
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
     // functions 
+  =======
+    // functions
+  >>>>>>> document-dir-empty-sting
     invalid_key( 'function() {}', function(){} );
 
     // objects
@@ -71,7 +107,11 @@
     invalid_key( 'new String()'                 , new String() );
     invalid_key( 'new Number()'                 , new Number() );
     invalid_key( 'new Boolean()'                , new Boolean() );
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
     
+  =======
+
+  >>>>>>> document-dir-empty-sting
     // arrays
     invalid_key( '[{}]'                     , [{}] );
     invalid_key( '[[], [], [], [[ Date ]]]' , [ [], [], [], [[ Date ]] ] );

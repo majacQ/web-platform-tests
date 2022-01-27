@@ -1,9 +1,14 @@
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
 ﻿<!DOCTYPE html>
+  =======
+<!DOCTYPE html>
+  >>>>>>> document-dir-empty-sting
 <!-- Submitted from TestTWF Paris -->
 <meta charset="utf-8">
 <title>Invalid keypath</title>
 <link rel=help href="http://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html#key-path-construct">
 <link rel=assert title="A key path is a DOMString that defines how to extract a key from a value. A valid key path is either the empty string, a JavaScript identifier, or multiple Javascript identifiers separated by periods (ASCII character code 46) [ECMA-262].">
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
 
 <!-- From Opera’s keypath.htm test:
 
@@ -11,6 +16,8 @@
 
     This is just an optimized version (by Baptiste Fontaine, batifon@yahoo.fr)
 -->
+  =======
+  >>>>>>> document-dir-empty-sting
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="support.js"></script>
@@ -27,7 +34,10 @@
 
         openrq.onupgradeneeded = function(e) {
             var db = e.target.result;
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
             console.log("got upgrade on " + db.name);
+  =======
+  >>>>>>> document-dir-empty-sting
             assert_throws('SyntaxError', function() {
                     db.createObjectStore(store_name, { keyPath: keypath })
                 }, "createObjectStore with keyPath");

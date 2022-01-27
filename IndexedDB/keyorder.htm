@@ -1,4 +1,8 @@
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
 ﻿<!DOCTYPE html>
+  =======
+<!DOCTYPE html>
+  >>>>>>> document-dir-empty-sting
 <!-- Submitted from TestTWF Paris -->
 <meta charset="utf-8">
 <title>Key sort order</title>
@@ -13,11 +17,14 @@
 6. Increase i by 1.
 7. If i is not equal to length, go back to step 4. Otherwise continue to next step.
 8. If A's length is less than B's length, then A is less than B. If A's length is greater than B's length, then A is greater than B. Otherwise A and B are equal.">
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
 <!-- From Opera’s keyorder.htm test:
         http://w3c-test.org/webapps/IndexedDB/tests/submissions/Opera/keyorder.htm
 
     This is just an optimized version (by Baptiste Fontaine, batifon@yahoo.fr)
 -->
+  =======
+  >>>>>>> document-dir-empty-sting
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="support.js"></script>
@@ -50,11 +57,19 @@
                 var cursor = e.target.result;
 
                 if (cursor) {
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
                     actual_keys.push(cursor.key.valueOf());
                     cursor.continue();
                 }
                 else {
                     assert_object_equals(actual_keys, expected, "keyorder array");
+  =======
+                    actual_keys.push(cursor.key);
+                    cursor.continue();
+                }
+                else {
+                    assert_key_equals(actual_keys, expected, "keyorder array");
+  >>>>>>> document-dir-empty-sting
                     assert_equals(actual_keys.length, expected.length, "array length");
 
                     t.done();
@@ -65,12 +80,16 @@
         // The IDBKey.cmp test
         test(function () {
             var sorted = unsorted.slice(0).sort(function(a, b) { return indexedDB.cmp(a, b)});
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
 
             for (var i in sorted)
                 if (typeof sorted[i] === "object" && 'valueOf' in sorted[i])
                     sorted[i] = sorted[i].valueOf();
 
             assert_object_equals(sorted, expected, "sorted array");
+  =======
+            assert_key_equals(sorted, expected, "sorted array");
+  >>>>>>> document-dir-empty-sting
 
         }, "IDBKey.cmp sorted - " + desc);
     }
@@ -89,16 +108,28 @@
 
     keysort('float < Date',
         [ now, 0, 9999999999999, -0.22 ],
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
         [ -0.22, 0, 9999999999999, now.valueOf() ]);
 
     keysort('float < Date < String < Array',
         [ [], "", now, [0], "-1", 0, 9999999999999, ],
         [ 0, 9999999999999, now.valueOf(), "", "-1", [], [0] ]);
+  =======
+        [ -0.22, 0, 9999999999999, now ]);
+
+    keysort('float < Date < String < Array',
+        [ [], "", now, [0], "-1", 0, 9999999999999, ],
+        [ 0, 9999999999999, now, "", "-1", [], [0] ]);
+  >>>>>>> document-dir-empty-sting
 
 
     keysort('Date(1 sec ago) < Date(now) < Date(1 minute in future)',
         [ now, one_sec_ago, one_min_future ],
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
         [ one_sec_ago.valueOf(), now.valueOf(), one_min_future.valueOf() ]);
+  =======
+        [ one_sec_ago, now, one_min_future ]);
+  >>>>>>> document-dir-empty-sting
 
     keysort('-1.1 < 1 < 1.01337 < 1.013373 < 2',
         [ 1.013373, 2, 1.01337, -1.1, 1 ],
@@ -162,12 +193,21 @@
           1,
           2.55,
           Infinity,
+  <<<<<<< submissions/TestTWF/BaptisteFontaine-IndexedDB
           one_sec_ago.valueOf(),
           now.valueOf(),
           "test",
           [],
           [0 ,2, "c"],
           [0, now.valueOf()],
+  =======
+          one_sec_ago,
+          now,
+          "test",
+          [],
+          [0 ,2, "c"],
+          [0, now],
+  >>>>>>> document-dir-empty-sting
           [0, "b", "c"],
           [0, []],
           [0, [], 3],
