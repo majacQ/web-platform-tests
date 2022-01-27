@@ -1,4 +1,8 @@
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
 ﻿if (!window.indexedDB)
 {
     if (window.msIndexedDB)
@@ -42,7 +46,11 @@ add_completion_callback(function(tests)
     }
 });
 
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
 function createdb(test, dbname, version)
 {
     var rq_open,
@@ -80,7 +88,11 @@ function createdb_for_multiple_tests(dbname, version) {
     else
         rq_open = window.indexedDB.open(dbname);
 
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
     function auto_fail(evt) {
   =======
     function auto_fail(evt, current_test) {
@@ -89,7 +101,11 @@ function createdb_for_multiple_tests(dbname, version) {
          * expect to get event whatever. */
         rq_open.manually_handled = {}
 
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
         rq_open.addEventListener(evt,
             test.step_func(function(e) {
                 if (!rq_open.manually_handled[evt])
@@ -117,7 +133,11 @@ function createdb_for_multiple_tests(dbname, version) {
                     this.db.onversionchange = fail(test, "unexpected db.versionchange");
                 }
             })
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  <<<<<<< submissions/TestTWF/ChristopheCHARLES-IndexedDB
+  =======
   <<<<<<< submissions/TestTWF/dgrogan-IndexedDB
+  >>>>>>> document-dir-empty-sting
         )
         rq_open.__defineSetter__("on" + evt, function(h) {
             rq_open.manually_handled[evt] = true
