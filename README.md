@@ -74,7 +74,10 @@ any derivative works prepared by the W3C and based on, or
 incorporating all or part of the contribution. The Contributor further
 agrees that any derivative works of this contribution prepared by the
 W3C shall be solely owned by the W3C.
+  <<<<<<< dir-auto-textarea
+  =======
   <<<<<<< submission/Ms2ger/hidden
+  >>>>>>> CR
 
 The Contributor states, to the best of her/his knowledge, that she/he,
 or the company she/he represents, has all rights necessary to
@@ -86,6 +89,13 @@ distribute contributions.
 
 Note: We can accept tests contributed under compatible conditions,
 just contact us to ask about it.
+ <<<<<<< dir-auto-textarea
+
+[1] http://www.w3.org/Consortium/Legal/2008/03-bsd-license.html
+
+### Disclaimer
+
+  =======
 
 [1] http://www.w3.org/Consortium/Legal/2008/03-bsd-license.html
 
@@ -108,6 +118,7 @@ just contact us to ask about it.
 
 ### Disclaimer
 
+  >>>>>>> CR
   >>>>>>> CR
 THE CONTRIBUTION IS PROVIDED AS IS, AND CONTRIBUTORS MAKE NO
 REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT
